@@ -62,8 +62,8 @@ app.post('/git', function(req, res) {
     cmd.get('./git.sh', function(err, data) {
       if (data) console.log(data);
       if (err) console.log(err);
+      cmd.run('refresh');
     });
-    cmd.run('refresh');
     
     console.log("> [GIT] Updated with origin/master");
   }
