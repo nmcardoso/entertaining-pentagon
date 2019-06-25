@@ -6,6 +6,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var cmd = require('node-cmd');
+var rand = require('random');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // we've started you off with Express, 
@@ -54,6 +55,10 @@ app.get('/getDreams', function(request, response) {
   db.all('SELECT * from Dreams', function(err, rows) {
     response.send(JSON.stringify(rows));
   });
+});
+
+app.get('/rand', function(req, res) {
+  res.send(rand.int().toString());
 });
 
 app.post('/git', function(req, res) {
